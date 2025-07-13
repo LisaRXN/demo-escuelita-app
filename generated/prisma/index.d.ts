@@ -1174,6 +1174,7 @@ export namespace Prisma {
     capacity: number | null
     image: string | null
     type: $Enums.SessionTypes | null
+    isProtected: boolean | null
     createdAt: Date | null
   }
 
@@ -1186,6 +1187,7 @@ export namespace Prisma {
     capacity: number | null
     image: string | null
     type: $Enums.SessionTypes | null
+    isProtected: boolean | null
     createdAt: Date | null
   }
 
@@ -1198,6 +1200,7 @@ export namespace Prisma {
     capacity: number
     image: number
     type: number
+    isProtected: number
     createdAt: number
     _all: number
   }
@@ -1222,6 +1225,7 @@ export namespace Prisma {
     capacity?: true
     image?: true
     type?: true
+    isProtected?: true
     createdAt?: true
   }
 
@@ -1234,6 +1238,7 @@ export namespace Prisma {
     capacity?: true
     image?: true
     type?: true
+    isProtected?: true
     createdAt?: true
   }
 
@@ -1246,6 +1251,7 @@ export namespace Prisma {
     capacity?: true
     image?: true
     type?: true
+    isProtected?: true
     createdAt?: true
     _all?: true
   }
@@ -1345,6 +1351,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type: $Enums.SessionTypes
+    isProtected: boolean
     createdAt: Date
     _count: VolunteerSessionCountAggregateOutputType | null
     _avg: VolunteerSessionAvgAggregateOutputType | null
@@ -1376,6 +1383,7 @@ export namespace Prisma {
     capacity?: boolean
     image?: boolean
     type?: boolean
+    isProtected?: boolean
     createdAt?: boolean
     volunteers?: boolean | VolunteerSession$volunteersArgs<ExtArgs>
     _count?: boolean | VolunteerSessionCountOutputTypeDefaultArgs<ExtArgs>
@@ -1390,6 +1398,7 @@ export namespace Prisma {
     capacity?: boolean
     image?: boolean
     type?: boolean
+    isProtected?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["volunteerSession"]>
 
@@ -1402,6 +1411,7 @@ export namespace Prisma {
     capacity?: boolean
     image?: boolean
     type?: boolean
+    isProtected?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["volunteerSession"]>
 
@@ -1414,10 +1424,11 @@ export namespace Prisma {
     capacity?: boolean
     image?: boolean
     type?: boolean
+    isProtected?: boolean
     createdAt?: boolean
   }
 
-  export type VolunteerSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "date" | "description" | "location" | "capacity" | "image" | "type" | "createdAt", ExtArgs["result"]["volunteerSession"]>
+  export type VolunteerSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "date" | "description" | "location" | "capacity" | "image" | "type" | "isProtected" | "createdAt", ExtArgs["result"]["volunteerSession"]>
   export type VolunteerSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     volunteers?: boolean | VolunteerSession$volunteersArgs<ExtArgs>
     _count?: boolean | VolunteerSessionCountOutputTypeDefaultArgs<ExtArgs>
@@ -1439,6 +1450,7 @@ export namespace Prisma {
       capacity: number
       image: string
       type: $Enums.SessionTypes
+      isProtected: boolean
       createdAt: Date
     }, ExtArgs["result"]["volunteerSession"]>
     composites: {}
@@ -1872,6 +1884,7 @@ export namespace Prisma {
     readonly capacity: FieldRef<"VolunteerSession", 'Int'>
     readonly image: FieldRef<"VolunteerSession", 'String'>
     readonly type: FieldRef<"VolunteerSession", 'SessionTypes'>
+    readonly isProtected: FieldRef<"VolunteerSession", 'Boolean'>
     readonly createdAt: FieldRef<"VolunteerSession", 'DateTime'>
   }
     
@@ -2336,6 +2349,7 @@ export namespace Prisma {
     isAdmin: boolean | null
     isLeader: boolean | null
     isActive: boolean | null
+    isProtected: boolean | null
   }
 
   export type VolunteerMaxAggregateOutputType = {
@@ -2351,6 +2365,7 @@ export namespace Prisma {
     isAdmin: boolean | null
     isLeader: boolean | null
     isActive: boolean | null
+    isProtected: boolean | null
   }
 
   export type VolunteerCountAggregateOutputType = {
@@ -2366,6 +2381,7 @@ export namespace Prisma {
     isAdmin: number
     isLeader: number
     isActive: number
+    isProtected: number
     _all: number
   }
 
@@ -2391,6 +2407,7 @@ export namespace Prisma {
     isAdmin?: true
     isLeader?: true
     isActive?: true
+    isProtected?: true
   }
 
   export type VolunteerMaxAggregateInputType = {
@@ -2406,6 +2423,7 @@ export namespace Prisma {
     isAdmin?: true
     isLeader?: true
     isActive?: true
+    isProtected?: true
   }
 
   export type VolunteerCountAggregateInputType = {
@@ -2421,6 +2439,7 @@ export namespace Prisma {
     isAdmin?: true
     isLeader?: true
     isActive?: true
+    isProtected?: true
     _all?: true
   }
 
@@ -2523,6 +2542,7 @@ export namespace Prisma {
     isAdmin: boolean
     isLeader: boolean
     isActive: boolean
+    isProtected: boolean
     _count: VolunteerCountAggregateOutputType | null
     _avg: VolunteerAvgAggregateOutputType | null
     _sum: VolunteerSumAggregateOutputType | null
@@ -2557,6 +2577,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
     registrations?: boolean | Volunteer$registrationsArgs<ExtArgs>
     _count?: boolean | VolunteerCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["volunteer"]>
@@ -2574,6 +2595,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }, ExtArgs["result"]["volunteer"]>
 
   export type VolunteerSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2589,6 +2611,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }, ExtArgs["result"]["volunteer"]>
 
   export type VolunteerSelectScalar = {
@@ -2604,9 +2627,10 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }
 
-  export type VolunteerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkUserId" | "firstName" | "lastName" | "phone" | "email" | "instagram" | "birthDate" | "createdAt" | "isAdmin" | "isLeader" | "isActive", ExtArgs["result"]["volunteer"]>
+  export type VolunteerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "clerkUserId" | "firstName" | "lastName" | "phone" | "email" | "instagram" | "birthDate" | "createdAt" | "isAdmin" | "isLeader" | "isActive" | "isProtected", ExtArgs["result"]["volunteer"]>
   export type VolunteerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     registrations?: boolean | Volunteer$registrationsArgs<ExtArgs>
     _count?: boolean | VolunteerCountOutputTypeDefaultArgs<ExtArgs>
@@ -2632,6 +2656,7 @@ export namespace Prisma {
       isAdmin: boolean
       isLeader: boolean
       isActive: boolean
+      isProtected: boolean
     }, ExtArgs["result"]["volunteer"]>
     composites: {}
   }
@@ -3068,6 +3093,7 @@ export namespace Prisma {
     readonly isAdmin: FieldRef<"Volunteer", 'Boolean'>
     readonly isLeader: FieldRef<"Volunteer", 'Boolean'>
     readonly isActive: FieldRef<"Volunteer", 'Boolean'>
+    readonly isProtected: FieldRef<"Volunteer", 'Boolean'>
   }
     
 
@@ -3527,6 +3553,7 @@ export namespace Prisma {
     volunteerId: number | null
     sessionId: number | null
     status: $Enums.RegistrationStatus | null
+    isProtected: boolean | null
     createdAt: Date | null
   }
 
@@ -3535,6 +3562,7 @@ export namespace Prisma {
     volunteerId: number | null
     sessionId: number | null
     status: $Enums.RegistrationStatus | null
+    isProtected: boolean | null
     createdAt: Date | null
   }
 
@@ -3543,6 +3571,7 @@ export namespace Prisma {
     volunteerId: number
     sessionId: number
     status: number
+    isProtected: number
     createdAt: number
     _all: number
   }
@@ -3565,6 +3594,7 @@ export namespace Prisma {
     volunteerId?: true
     sessionId?: true
     status?: true
+    isProtected?: true
     createdAt?: true
   }
 
@@ -3573,6 +3603,7 @@ export namespace Prisma {
     volunteerId?: true
     sessionId?: true
     status?: true
+    isProtected?: true
     createdAt?: true
   }
 
@@ -3581,6 +3612,7 @@ export namespace Prisma {
     volunteerId?: true
     sessionId?: true
     status?: true
+    isProtected?: true
     createdAt?: true
     _all?: true
   }
@@ -3676,6 +3708,7 @@ export namespace Prisma {
     volunteerId: number
     sessionId: number
     status: $Enums.RegistrationStatus
+    isProtected: boolean
     createdAt: Date
     _count: VolunteerRegistrationCountAggregateOutputType | null
     _avg: VolunteerRegistrationAvgAggregateOutputType | null
@@ -3703,6 +3736,7 @@ export namespace Prisma {
     volunteerId?: boolean
     sessionId?: boolean
     status?: boolean
+    isProtected?: boolean
     createdAt?: boolean
     volunteer?: boolean | VolunteerDefaultArgs<ExtArgs>
     session?: boolean | VolunteerSessionDefaultArgs<ExtArgs>
@@ -3713,6 +3747,7 @@ export namespace Prisma {
     volunteerId?: boolean
     sessionId?: boolean
     status?: boolean
+    isProtected?: boolean
     createdAt?: boolean
     volunteer?: boolean | VolunteerDefaultArgs<ExtArgs>
     session?: boolean | VolunteerSessionDefaultArgs<ExtArgs>
@@ -3723,6 +3758,7 @@ export namespace Prisma {
     volunteerId?: boolean
     sessionId?: boolean
     status?: boolean
+    isProtected?: boolean
     createdAt?: boolean
     volunteer?: boolean | VolunteerDefaultArgs<ExtArgs>
     session?: boolean | VolunteerSessionDefaultArgs<ExtArgs>
@@ -3733,10 +3769,11 @@ export namespace Prisma {
     volunteerId?: boolean
     sessionId?: boolean
     status?: boolean
+    isProtected?: boolean
     createdAt?: boolean
   }
 
-  export type VolunteerRegistrationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "volunteerId" | "sessionId" | "status" | "createdAt", ExtArgs["result"]["volunteerRegistration"]>
+  export type VolunteerRegistrationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "volunteerId" | "sessionId" | "status" | "isProtected" | "createdAt", ExtArgs["result"]["volunteerRegistration"]>
   export type VolunteerRegistrationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     volunteer?: boolean | VolunteerDefaultArgs<ExtArgs>
     session?: boolean | VolunteerSessionDefaultArgs<ExtArgs>
@@ -3761,6 +3798,7 @@ export namespace Prisma {
       volunteerId: number
       sessionId: number
       status: $Enums.RegistrationStatus
+      isProtected: boolean
       createdAt: Date
     }, ExtArgs["result"]["volunteerRegistration"]>
     composites: {}
@@ -4191,6 +4229,7 @@ export namespace Prisma {
     readonly volunteerId: FieldRef<"VolunteerRegistration", 'Int'>
     readonly sessionId: FieldRef<"VolunteerRegistration", 'Int'>
     readonly status: FieldRef<"VolunteerRegistration", 'RegistrationStatus'>
+    readonly isProtected: FieldRef<"VolunteerRegistration", 'Boolean'>
     readonly createdAt: FieldRef<"VolunteerRegistration", 'DateTime'>
   }
     
@@ -4629,6 +4668,7 @@ export namespace Prisma {
     capacity: 'capacity',
     image: 'image',
     type: 'type',
+    isProtected: 'isProtected',
     createdAt: 'createdAt'
   };
 
@@ -4647,7 +4687,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     isAdmin: 'isAdmin',
     isLeader: 'isLeader',
-    isActive: 'isActive'
+    isActive: 'isActive',
+    isProtected: 'isProtected'
   };
 
   export type VolunteerScalarFieldEnum = (typeof VolunteerScalarFieldEnum)[keyof typeof VolunteerScalarFieldEnum]
@@ -4658,6 +4699,7 @@ export namespace Prisma {
     volunteerId: 'volunteerId',
     sessionId: 'sessionId',
     status: 'status',
+    isProtected: 'isProtected',
     createdAt: 'createdAt'
   };
 
@@ -4799,6 +4841,7 @@ export namespace Prisma {
     capacity?: IntFilter<"VolunteerSession"> | number
     image?: StringFilter<"VolunteerSession"> | string
     type?: EnumSessionTypesFilter<"VolunteerSession"> | $Enums.SessionTypes
+    isProtected?: BoolFilter<"VolunteerSession"> | boolean
     createdAt?: DateTimeFilter<"VolunteerSession"> | Date | string
     volunteers?: VolunteerRegistrationListRelationFilter
   }
@@ -4812,6 +4855,7 @@ export namespace Prisma {
     capacity?: SortOrder
     image?: SortOrder
     type?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
     volunteers?: VolunteerRegistrationOrderByRelationAggregateInput
   }
@@ -4828,6 +4872,7 @@ export namespace Prisma {
     capacity?: IntFilter<"VolunteerSession"> | number
     image?: StringFilter<"VolunteerSession"> | string
     type?: EnumSessionTypesFilter<"VolunteerSession"> | $Enums.SessionTypes
+    isProtected?: BoolFilter<"VolunteerSession"> | boolean
     createdAt?: DateTimeFilter<"VolunteerSession"> | Date | string
     volunteers?: VolunteerRegistrationListRelationFilter
   }, "id">
@@ -4841,6 +4886,7 @@ export namespace Prisma {
     capacity?: SortOrder
     image?: SortOrder
     type?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
     _count?: VolunteerSessionCountOrderByAggregateInput
     _avg?: VolunteerSessionAvgOrderByAggregateInput
@@ -4861,6 +4907,7 @@ export namespace Prisma {
     capacity?: IntWithAggregatesFilter<"VolunteerSession"> | number
     image?: StringWithAggregatesFilter<"VolunteerSession"> | string
     type?: EnumSessionTypesWithAggregatesFilter<"VolunteerSession"> | $Enums.SessionTypes
+    isProtected?: BoolWithAggregatesFilter<"VolunteerSession"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"VolunteerSession"> | Date | string
   }
 
@@ -4880,6 +4927,7 @@ export namespace Prisma {
     isAdmin?: BoolFilter<"Volunteer"> | boolean
     isLeader?: BoolFilter<"Volunteer"> | boolean
     isActive?: BoolFilter<"Volunteer"> | boolean
+    isProtected?: BoolFilter<"Volunteer"> | boolean
     registrations?: VolunteerRegistrationListRelationFilter
   }
 
@@ -4896,6 +4944,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     isLeader?: SortOrder
     isActive?: SortOrder
+    isProtected?: SortOrder
     registrations?: VolunteerRegistrationOrderByRelationAggregateInput
   }
 
@@ -4915,6 +4964,7 @@ export namespace Prisma {
     isAdmin?: BoolFilter<"Volunteer"> | boolean
     isLeader?: BoolFilter<"Volunteer"> | boolean
     isActive?: BoolFilter<"Volunteer"> | boolean
+    isProtected?: BoolFilter<"Volunteer"> | boolean
     registrations?: VolunteerRegistrationListRelationFilter
   }, "id" | "clerkUserId">
 
@@ -4931,6 +4981,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     isLeader?: SortOrder
     isActive?: SortOrder
+    isProtected?: SortOrder
     _count?: VolunteerCountOrderByAggregateInput
     _avg?: VolunteerAvgOrderByAggregateInput
     _max?: VolunteerMaxOrderByAggregateInput
@@ -4954,6 +5005,7 @@ export namespace Prisma {
     isAdmin?: BoolWithAggregatesFilter<"Volunteer"> | boolean
     isLeader?: BoolWithAggregatesFilter<"Volunteer"> | boolean
     isActive?: BoolWithAggregatesFilter<"Volunteer"> | boolean
+    isProtected?: BoolWithAggregatesFilter<"Volunteer"> | boolean
   }
 
   export type VolunteerRegistrationWhereInput = {
@@ -4964,6 +5016,7 @@ export namespace Prisma {
     volunteerId?: IntFilter<"VolunteerRegistration"> | number
     sessionId?: IntFilter<"VolunteerRegistration"> | number
     status?: EnumRegistrationStatusFilter<"VolunteerRegistration"> | $Enums.RegistrationStatus
+    isProtected?: BoolFilter<"VolunteerRegistration"> | boolean
     createdAt?: DateTimeFilter<"VolunteerRegistration"> | Date | string
     volunteer?: XOR<VolunteerScalarRelationFilter, VolunteerWhereInput>
     session?: XOR<VolunteerSessionScalarRelationFilter, VolunteerSessionWhereInput>
@@ -4974,6 +5027,7 @@ export namespace Prisma {
     volunteerId?: SortOrder
     sessionId?: SortOrder
     status?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
     volunteer?: VolunteerOrderByWithRelationInput
     session?: VolunteerSessionOrderByWithRelationInput
@@ -4988,6 +5042,7 @@ export namespace Prisma {
     volunteerId?: IntFilter<"VolunteerRegistration"> | number
     sessionId?: IntFilter<"VolunteerRegistration"> | number
     status?: EnumRegistrationStatusFilter<"VolunteerRegistration"> | $Enums.RegistrationStatus
+    isProtected?: BoolFilter<"VolunteerRegistration"> | boolean
     createdAt?: DateTimeFilter<"VolunteerRegistration"> | Date | string
     volunteer?: XOR<VolunteerScalarRelationFilter, VolunteerWhereInput>
     session?: XOR<VolunteerSessionScalarRelationFilter, VolunteerSessionWhereInput>
@@ -4998,6 +5053,7 @@ export namespace Prisma {
     volunteerId?: SortOrder
     sessionId?: SortOrder
     status?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
     _count?: VolunteerRegistrationCountOrderByAggregateInput
     _avg?: VolunteerRegistrationAvgOrderByAggregateInput
@@ -5014,6 +5070,7 @@ export namespace Prisma {
     volunteerId?: IntWithAggregatesFilter<"VolunteerRegistration"> | number
     sessionId?: IntWithAggregatesFilter<"VolunteerRegistration"> | number
     status?: EnumRegistrationStatusWithAggregatesFilter<"VolunteerRegistration"> | $Enums.RegistrationStatus
+    isProtected?: BoolWithAggregatesFilter<"VolunteerRegistration"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"VolunteerRegistration"> | Date | string
   }
 
@@ -5025,6 +5082,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type?: $Enums.SessionTypes
+    isProtected?: boolean
     createdAt?: Date | string
     volunteers?: VolunteerRegistrationCreateNestedManyWithoutSessionInput
   }
@@ -5038,6 +5096,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type?: $Enums.SessionTypes
+    isProtected?: boolean
     createdAt?: Date | string
     volunteers?: VolunteerRegistrationUncheckedCreateNestedManyWithoutSessionInput
   }
@@ -5050,6 +5109,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     volunteers?: VolunteerRegistrationUpdateManyWithoutSessionNestedInput
   }
@@ -5063,6 +5123,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     volunteers?: VolunteerRegistrationUncheckedUpdateManyWithoutSessionNestedInput
   }
@@ -5076,6 +5137,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type?: $Enums.SessionTypes
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
@@ -5087,6 +5149,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5099,6 +5162,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5114,6 +5178,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
     registrations?: VolunteerRegistrationCreateNestedManyWithoutVolunteerInput
   }
 
@@ -5130,6 +5195,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
     registrations?: VolunteerRegistrationUncheckedCreateNestedManyWithoutVolunteerInput
   }
 
@@ -5145,6 +5211,7 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     registrations?: VolunteerRegistrationUpdateManyWithoutVolunteerNestedInput
   }
 
@@ -5161,6 +5228,7 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     registrations?: VolunteerRegistrationUncheckedUpdateManyWithoutVolunteerNestedInput
   }
 
@@ -5177,6 +5245,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }
 
   export type VolunteerUpdateManyMutationInput = {
@@ -5191,6 +5260,7 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type VolunteerUncheckedUpdateManyInput = {
@@ -5206,10 +5276,12 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type VolunteerRegistrationCreateInput = {
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
     volunteer: VolunteerCreateNestedOneWithoutRegistrationsInput
     session: VolunteerSessionCreateNestedOneWithoutVolunteersInput
@@ -5220,11 +5292,13 @@ export namespace Prisma {
     volunteerId: number
     sessionId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
   export type VolunteerRegistrationUpdateInput = {
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     volunteer?: VolunteerUpdateOneRequiredWithoutRegistrationsNestedInput
     session?: VolunteerSessionUpdateOneRequiredWithoutVolunteersNestedInput
@@ -5235,6 +5309,7 @@ export namespace Prisma {
     volunteerId?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5243,11 +5318,13 @@ export namespace Prisma {
     volunteerId: number
     sessionId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
   export type VolunteerRegistrationUpdateManyMutationInput = {
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5256,6 +5333,7 @@ export namespace Prisma {
     volunteerId?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -5303,6 +5381,11 @@ export namespace Prisma {
     not?: NestedEnumSessionTypesFilter<$PrismaModel> | $Enums.SessionTypes
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type VolunteerRegistrationListRelationFilter = {
     every?: VolunteerRegistrationWhereInput
     some?: VolunteerRegistrationWhereInput
@@ -5322,6 +5405,7 @@ export namespace Prisma {
     capacity?: SortOrder
     image?: SortOrder
     type?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5339,6 +5423,7 @@ export namespace Prisma {
     capacity?: SortOrder
     image?: SortOrder
     type?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5351,6 +5436,7 @@ export namespace Prisma {
     capacity?: SortOrder
     image?: SortOrder
     type?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5417,6 +5503,14 @@ export namespace Prisma {
     _max?: NestedEnumSessionTypesFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5430,11 +5524,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type SortOrderInput = {
@@ -5455,6 +5544,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     isLeader?: SortOrder
     isActive?: SortOrder
+    isProtected?: SortOrder
   }
 
   export type VolunteerAvgOrderByAggregateInput = {
@@ -5474,6 +5564,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     isLeader?: SortOrder
     isActive?: SortOrder
+    isProtected?: SortOrder
   }
 
   export type VolunteerMinOrderByAggregateInput = {
@@ -5489,6 +5580,7 @@ export namespace Prisma {
     isAdmin?: SortOrder
     isLeader?: SortOrder
     isActive?: SortOrder
+    isProtected?: SortOrder
   }
 
   export type VolunteerSumOrderByAggregateInput = {
@@ -5511,14 +5603,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type EnumRegistrationStatusFilter<$PrismaModel = never> = {
@@ -5548,6 +5632,7 @@ export namespace Prisma {
     volunteerId?: SortOrder
     sessionId?: SortOrder
     status?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5562,6 +5647,7 @@ export namespace Prisma {
     volunteerId?: SortOrder
     sessionId?: SortOrder
     status?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5570,6 +5656,7 @@ export namespace Prisma {
     volunteerId?: SortOrder
     sessionId?: SortOrder
     status?: SortOrder
+    isProtected?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -5623,6 +5710,10 @@ export namespace Prisma {
     set?: $Enums.SessionTypes
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type VolunteerRegistrationUpdateManyWithoutSessionNestedInput = {
     create?: XOR<VolunteerRegistrationCreateWithoutSessionInput, VolunteerRegistrationUncheckedCreateWithoutSessionInput> | VolunteerRegistrationCreateWithoutSessionInput[] | VolunteerRegistrationUncheckedCreateWithoutSessionInput[]
     connectOrCreate?: VolunteerRegistrationCreateOrConnectWithoutSessionInput | VolunteerRegistrationCreateOrConnectWithoutSessionInput[]
@@ -5667,10 +5758,6 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type VolunteerRegistrationUpdateManyWithoutVolunteerNestedInput = {
@@ -5776,6 +5863,11 @@ export namespace Prisma {
     not?: NestedEnumSessionTypesFilter<$PrismaModel> | $Enums.SessionTypes
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5844,6 +5936,14 @@ export namespace Prisma {
     _max?: NestedEnumSessionTypesFilter<$PrismaModel>
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -5856,11 +5956,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5891,14 +5986,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedEnumRegistrationStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.RegistrationStatus | EnumRegistrationStatusFieldRefInput<$PrismaModel>
     in?: $Enums.RegistrationStatus[] | ListEnumRegistrationStatusFieldRefInput<$PrismaModel>
@@ -5918,6 +6005,7 @@ export namespace Prisma {
 
   export type VolunteerRegistrationCreateWithoutSessionInput = {
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
     volunteer: VolunteerCreateNestedOneWithoutRegistrationsInput
   }
@@ -5926,6 +6014,7 @@ export namespace Prisma {
     id?: number
     volunteerId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
@@ -5963,11 +6052,13 @@ export namespace Prisma {
     volunteerId?: IntFilter<"VolunteerRegistration"> | number
     sessionId?: IntFilter<"VolunteerRegistration"> | number
     status?: EnumRegistrationStatusFilter<"VolunteerRegistration"> | $Enums.RegistrationStatus
+    isProtected?: BoolFilter<"VolunteerRegistration"> | boolean
     createdAt?: DateTimeFilter<"VolunteerRegistration"> | Date | string
   }
 
   export type VolunteerRegistrationCreateWithoutVolunteerInput = {
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
     session: VolunteerSessionCreateNestedOneWithoutVolunteersInput
   }
@@ -5976,6 +6067,7 @@ export namespace Prisma {
     id?: number
     sessionId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
@@ -6017,6 +6109,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }
 
   export type VolunteerUncheckedCreateWithoutRegistrationsInput = {
@@ -6032,6 +6125,7 @@ export namespace Prisma {
     isAdmin?: boolean
     isLeader?: boolean
     isActive?: boolean
+    isProtected?: boolean
   }
 
   export type VolunteerCreateOrConnectWithoutRegistrationsInput = {
@@ -6047,6 +6141,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type?: $Enums.SessionTypes
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
@@ -6059,6 +6154,7 @@ export namespace Prisma {
     capacity: number
     image: string
     type?: $Enums.SessionTypes
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
@@ -6090,6 +6186,7 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type VolunteerUncheckedUpdateWithoutRegistrationsInput = {
@@ -6105,6 +6202,7 @@ export namespace Prisma {
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isLeader?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type VolunteerSessionUpsertWithoutVolunteersInput = {
@@ -6126,6 +6224,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6138,6 +6237,7 @@ export namespace Prisma {
     capacity?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     type?: EnumSessionTypesFieldUpdateOperationsInput | $Enums.SessionTypes
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6145,11 +6245,13 @@ export namespace Prisma {
     id?: number
     volunteerId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
   export type VolunteerRegistrationUpdateWithoutSessionInput = {
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     volunteer?: VolunteerUpdateOneRequiredWithoutRegistrationsNestedInput
   }
@@ -6158,6 +6260,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     volunteerId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6165,6 +6268,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     volunteerId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6172,11 +6276,13 @@ export namespace Prisma {
     id?: number
     sessionId: number
     status?: $Enums.RegistrationStatus
+    isProtected?: boolean
     createdAt?: Date | string
   }
 
   export type VolunteerRegistrationUpdateWithoutVolunteerInput = {
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: VolunteerSessionUpdateOneRequiredWithoutVolunteersNestedInput
   }
@@ -6185,6 +6291,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -6192,6 +6299,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     status?: EnumRegistrationStatusFieldUpdateOperationsInput | $Enums.RegistrationStatus
+    isProtected?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

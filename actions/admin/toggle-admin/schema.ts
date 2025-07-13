@@ -2,6 +2,6 @@
 import { z } from "zod";
 
 export const ToggleAdminSchema = z.object({
-  volunteerId: z.number(),
+  volunteerId: z.string(),
   isAdmin: z.boolean(),
 });

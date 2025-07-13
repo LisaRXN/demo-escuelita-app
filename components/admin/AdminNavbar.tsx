@@ -2,10 +2,15 @@ import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
+import ToggleAdminButton from "./ToggleAdminButton";
+import ResetDatabase from "./ResetDatabase";
 
 const AdminNavbar = async () => {
   const user = await currentUser();
-
+  if (!user) {
+    return null;
+  }
+  
   return (
     <nav className="fixed z-50 top-0 w-full h-20 mb-20 px-2 md:px-10 border-b shadow-sm bg-white flex items-center">
       <Link href="/admin" className="cursor-pointer">
@@ -22,15 +27,18 @@ const AdminNavbar = async () => {
 
       {/* Desktop */}
       <div className="hidden flex-1 md:flex items-center justify-end w-full gap-6 mr-6">
+      <ResetDatabase />
+      <ToggleAdminButton isAdmin={true} volunteerId={user.id} />
+
         <Link
           href="/admin/sessions/create-session"
-          className="px-4 py-2.5 bg-myorange text-white font-semibold rounded-md"
+          className="text-sm px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md hoover:bg-myzinc/80 transition duration-300"
         >
           Crear evento
         </Link>
         <Link
           href="/admin/agenda"
-          className="px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md"
+          className="text-sm px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md hoover:bg-myzinc/80 transition duration-300"
         >
           Agenda
         </Link>

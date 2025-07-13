@@ -14,14 +14,14 @@ export const handler = async (
 
   try {
     const updated = await prisma.volunteer.update({
-      where: { id: volunteerId },
+      where: { clerkUserId: volunteerId },
       data: { isAdmin },
     });
 
     // Invalide les paths si nécessaire
     revalidatePath("/admin/volunteers");
 
-    return { data: { volunteerId: updated.id, isAdmin: updated.isAdmin ?? false } };
+    return { data: { volunteerId: updated.clerkUserId, isAdmin: updated.isAdmin ?? false } };
   } catch (error) {
     console.error("Erreur toggle active:", error);
     await prisma.$disconnect();

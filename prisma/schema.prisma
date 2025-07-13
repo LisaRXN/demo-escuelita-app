@@ -7,8 +7,8 @@
 generator client {
   provider      = "prisma-client-js"
   output        = "../generated/prisma"
-  binaryTargets   = ["native", "rhel-openssl-3.0.x"]
-  engineType      = "binary"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+  engineType    = "binary"
 }
 
 datasource db {
@@ -33,10 +33,11 @@ model VolunteerSession {
   title       String
   date        DateTime
   description String
-  location    String // ✅ Nouveau champ : localisation de la session
+  location    String
   capacity    Int
   image       String
   type        SessionTypes            @default(TUTORING)
+  isProtected Boolean                 @default(false)
   createdAt   DateTime                @default(now())
   volunteers  VolunteerRegistration[] // relation inverse
 }
@@ -54,6 +55,8 @@ model Volunteer {
   isAdmin       Boolean                 @default(false)
   isLeader      Boolean                 @default(false)
   isActive      Boolean                 @default(false)
+  isProtected   Boolean                 @default(false)
+
   registrations VolunteerRegistration[] // relation vers la table de liaison
 }
 
@@ -64,7 +67,7 @@ model VolunteerRegistration {
   session     VolunteerSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)
   sessionId   Int
   status      RegistrationStatus @default(PENDING)
-
+  isProtected   Boolean                 @default(false)
   createdAt DateTime @default(now())
 
   @@unique([volunteerId, sessionId]) // Un volontaire ne peut s’inscrire qu’une fois par session

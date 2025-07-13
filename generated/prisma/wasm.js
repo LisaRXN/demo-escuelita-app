@@ -129,6 +129,7 @@ exports.Prisma.VolunteerSessionScalarFieldEnum = {
   capacity: 'capacity',
   image: 'image',
   type: 'type',
+  isProtected: 'isProtected',
   createdAt: 'createdAt'
 };
 
@@ -144,7 +145,8 @@ exports.Prisma.VolunteerScalarFieldEnum = {
   createdAt: 'createdAt',
   isAdmin: 'isAdmin',
   isLeader: 'isLeader',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  isProtected: 'isProtected'
 };
 
 exports.Prisma.VolunteerRegistrationScalarFieldEnum = {
@@ -152,6 +154,7 @@ exports.Prisma.VolunteerRegistrationScalarFieldEnum = {
   volunteerId: 'volunteerId',
   sessionId: 'sessionId',
   status: 'status',
+  isProtected: 'isProtected',
   createdAt: 'createdAt'
 };
 

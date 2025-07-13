@@ -115,7 +115,7 @@ const AdminPage = () => {
               <CardTitle
                 title="¡Sigue a tus voluntarios! 💖"
                 subtitle="Marca la asistencia de tus voluntarios en cada sesión"
-                link="/admin/sessions/get-sessions"
+                link="/agenda"
               />
               <div className="border border-zinc-300 rounded-lg w-full overflow-y-auto">
                 <table className="min-w-full divide-y divide-zinc-200 rounded-lg overflow-hidden">

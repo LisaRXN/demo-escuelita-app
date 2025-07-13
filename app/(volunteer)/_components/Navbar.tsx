@@ -2,10 +2,13 @@ import Image from "next/image";
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
+import ToggleAdminButton from "@/components/admin/ToggleAdminButton";
 
 const Navbar = async () => {
   const user = await currentUser();
-
+  if (!user) {
+    return null;
+  }
   return (
     <nav className="fixed z-50 top-0 w-full h-20 mb-20 px-2 md:px-10 border-b shadow-sm bg-white">
       <div className="flex items-center max-w-screen-2xl m-auto">
@@ -22,9 +25,10 @@ const Navbar = async () => {
         </span>
 
         <div className="flex-1 flex items-center justify-end w-full gap-10">
+          <ToggleAdminButton isAdmin={false} volunteerId={user.id} />
           <a
             href="/profil"
-            className="hidden md:block px-5 py-2.5 bg-myzinc text-white font-semibold rounded-lg"
+            className="hidden text-sm md:block px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md"
           >
             Mi actividad
           </a>
