@@ -44,7 +44,6 @@ export async function GET(req: NextRequest) {
   const users = await prisma.volunteer.findMany({
     where,
     orderBy,
-    cacheStrategy: { ttl: 60 },
   });
 
   if (!withCounts) {

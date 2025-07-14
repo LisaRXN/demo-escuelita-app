@@ -23,7 +23,6 @@ export async function GET() {
       date: "desc",
     },
     take: 4,
-    cacheStrategy: { ttl: 60 },
   });
 
   // Ajoute la liste des admins inscrits à chaque session

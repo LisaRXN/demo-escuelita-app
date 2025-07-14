@@ -37,6 +37,12 @@ const AdminNavbar = async () => {
           Crear evento
         </Link>
         <Link
+          href="/admin/users"
+          className="text-sm px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md hoover:bg-myzinc/80 transition duration-300"
+        >
+          Los voluntarios
+        </Link>
+        <Link
           href="/admin/agenda"
           className="text-sm px-4 py-2.5 bg-myzinc text-white font-semibold rounded-md hoover:bg-myzinc/80 transition duration-300"
         >

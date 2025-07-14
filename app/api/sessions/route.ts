@@ -13,7 +13,6 @@ export interface VolunteerSession {
 export async function GET() {
   const sessions = await prisma.volunteerSession.findMany({
     orderBy: { date: 'desc' },
-    cacheStrategy: { ttl: 60 },
     
   });
 
