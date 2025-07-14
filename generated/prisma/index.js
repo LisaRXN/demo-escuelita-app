@@ -26,7 +26,7 @@ const {
   Public,
   getRuntime,
   createParam,
-} = require('./runtime/binary.js')
+} = require('./runtime/library.js')
 
 
 const Prisma = {}
@@ -177,7 +177,7 @@ const config = {
       "fromEnvVar": null
     },
     "config": {
-      "engineType": "binary"
+      "engineType": "library"
     },
     "binaryTargets": [
       {
@@ -214,8 +214,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n  engineType    = \"binary\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum RegistrationStatus {\n  PENDING\n  CONFIRMED\n  CANCELLED\n  NO_SHOW // Inscrit mais pas venu\n}\n\nenum SessionTypes {\n  TUTORING\n  OTHER\n}\n\nmodel VolunteerSession {\n  id          Int                     @id @default(autoincrement())\n  title       String\n  date        DateTime\n  description String\n  location    String\n  capacity    Int\n  image       String\n  type        SessionTypes            @default(TUTORING)\n  isProtected Boolean                 @default(false)\n  createdAt   DateTime                @default(now())\n  volunteers  VolunteerRegistration[] // relation inverse\n}\n\nmodel Volunteer {\n  id          Int      @id @default(autoincrement())\n  clerkUserId String   @unique\n  firstName   String\n  lastName    String\n  phone       String\n  email       String\n  instagram   String?\n  birthDate   DateTime\n  createdAt   DateTime @default(now())\n  isAdmin     Boolean  @default(false)\n  isLeader    Boolean  @default(false)\n  isActive    Boolean  @default(false)\n  isProtected Boolean  @default(false)\n\n  registrations VolunteerRegistration[] // relation vers la table de liaison\n}\n\nmodel VolunteerRegistration {\n  id          Int                @id @default(autoincrement())\n  volunteer   Volunteer          @relation(fields: [volunteerId], references: [id], onDelete: Cascade)\n  volunteerId Int\n  session     VolunteerSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)\n  sessionId   Int\n  status      RegistrationStatus @default(PENDING)\n  isProtected Boolean            @default(false)\n  createdAt   DateTime           @default(now())\n\n  @@unique([volunteerId, sessionId]) // Un volontaire ne peut s’inscrire qu’une fois par session\n}\n",
-  "inlineSchemaHash": "c050848c5aa78d6ffce15466138ad4bcf6bb7498264881ec3c40b773cd995ab5",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum RegistrationStatus {\n  PENDING\n  CONFIRMED\n  CANCELLED\n  NO_SHOW // Inscrit mais pas venu\n}\n\nenum SessionTypes {\n  TUTORING\n  OTHER\n}\n\nmodel VolunteerSession {\n  id          Int                     @id @default(autoincrement())\n  title       String\n  date        DateTime\n  description String\n  location    String\n  capacity    Int\n  image       String\n  type        SessionTypes            @default(TUTORING)\n  isProtected Boolean                 @default(false)\n  createdAt   DateTime                @default(now())\n  volunteers  VolunteerRegistration[] // relation inverse\n}\n\nmodel Volunteer {\n  id          Int      @id @default(autoincrement())\n  clerkUserId String   @unique\n  firstName   String\n  lastName    String\n  phone       String\n  email       String\n  instagram   String?\n  birthDate   DateTime\n  createdAt   DateTime @default(now())\n  isAdmin     Boolean  @default(false)\n  isLeader    Boolean  @default(false)\n  isActive    Boolean  @default(false)\n  isProtected Boolean  @default(false)\n\n  registrations VolunteerRegistration[] // relation vers la table de liaison\n}\n\nmodel VolunteerRegistration {\n  id          Int                @id @default(autoincrement())\n  volunteer   Volunteer          @relation(fields: [volunteerId], references: [id], onDelete: Cascade)\n  volunteerId Int\n  session     VolunteerSession   @relation(fields: [sessionId], references: [id], onDelete: Cascade)\n  sessionId   Int\n  status      RegistrationStatus @default(PENDING)\n  isProtected Boolean            @default(false)\n  createdAt   DateTime           @default(now())\n\n  @@unique([volunteerId, sessionId]) // Un volontaire ne peut s’inscrire qu’une fois par session\n}\n",
+  "inlineSchemaHash": "ac0cca473aa7c71655564c2665b7c0ee18434895e8897403ce33ed1d4075dc09",
   "copyEngine": true
 }
 
@@ -242,7 +242,7 @@ config.engineWasm = undefined
 config.compilerWasm = undefined
 
 
-const { warnEnvConflicts } = require('./runtime/binary.js')
+const { warnEnvConflicts } = require('./runtime/library.js')
 
 warnEnvConflicts({
     rootEnvPath: config.relativeEnvPaths.rootEnvPath && path.resolve(config.dirname, config.relativeEnvPaths.rootEnvPath),
@@ -254,12 +254,12 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "query-engine-darwin");
-path.join(process.cwd(), "generated/prisma/query-engine-darwin")
+path.join(__dirname, "libquery_engine-darwin.dylib.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-darwin.dylib.node")
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "query-engine-rhel-openssl-3.0.x");
-path.join(process.cwd(), "generated/prisma/query-engine-rhel-openssl-3.0.x")
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
