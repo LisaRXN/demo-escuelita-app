@@ -11,7 +11,7 @@ export default async function RegisterPage(){
     const isComplete = await isVolunteerProfileComplete(userId);
 
         if (isComplete) {
-        redirect("/dashboard");
+        redirect("/");
       }
   
   return (

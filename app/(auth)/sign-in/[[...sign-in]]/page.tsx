@@ -16,7 +16,7 @@ export default function Page() {
         },
       }}
       signUpUrl="/sign-up"
-      fallbackRedirectUrl="/dashboard"
+      fallbackRedirectUrl="/"
     />
   );
 }

@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { useAction } from "@/hooks/use-action";
 import { useQueryClient } from "@tanstack/react-query"; 
 import { toggleAdmin } from "@/actions/admin/toggle-admin";
+import { redirect } from "next/navigation";
 
 
 interface ToggleAdminButtonProps {
@@ -21,13 +22,13 @@ const ToggleAdminButton = ({
 
   const { execute, isLoading } = useAction(toggleAdmin, {
     onSuccess: () => {
-      toast.success(`${isAdmin ? "Cambiaste tu rol a voluntario!" : "Cambiaste tu rol a coordinador!"}.`);
+      toast.success(`${isAdmin ? "Cambiaste tu rol a voluntario!" : "Cambiaste tu rol a coordinador!"}`);
       queryClient.invalidateQueries({ queryKey: ['volunteers'] });
-
+      redirect(`${isAdmin ? '/dashboard' : '/admin'}`);
     },
     onError: (error) => {
       toast.error(
-        `Error al cambiar de rol: ${error}`
+        `Error: ${error}`
       );
     },
   });

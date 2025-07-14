@@ -4,11 +4,17 @@ import Calendar from "@/components/session/Calendar";
 import { fetcher } from "@/lib/fetcher";
 import { SessionWithLiders } from "@/type";
 import { useQuery } from "@tanstack/react-query";
+import { usePathname } from "next/navigation";
 
 export default function AgendaPage() {
+
+  const pathname = usePathname();
+  const isOnAgendaPage = pathname === "/admin/agenda";
+
   const { data: sessions, isLoading } = useQuery<SessionWithLiders[]>({
     queryKey: ["sessionsWithLiders"],
     queryFn: () => fetcher("/api/sessionsWithLiders"),
+    enabled:isOnAgendaPage,
     staleTime: 0,
   });
 

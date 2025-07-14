@@ -1,11 +1,5 @@
-// import Navbar from "@/app/(volunteer)/_components/Navbar";
-// import { isVolunteerProfileComplete } from "@/lib/check-user";
-// import { isAdmin } from "@/lib/is-admin";
-// import { auth } from "@clerk/nextjs/server";
-// import { redirect } from "next/navigation";
 
-import { isVolunteerProfileComplete } from "@/lib/check-user";
-import { isAdmin } from "@/lib/is-admin";
+import { getVolunteerStatus } from "@/lib/get-volunteer-status";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
@@ -13,10 +7,9 @@ export default async function HomePage () {
 
   const { userId } = await auth();
   
-  const isUserAdmin = await isAdmin(userId);
-  const isComplete = await isVolunteerProfileComplete(userId);
+  const { isAdmin: isUserAdmin, isComplete } = await getVolunteerStatus(userId);
 
-
+  console.log('HomePage:', { isUserAdmin, isComplete });  
   if (!isComplete) {
     redirect("/register");
   }
@@ -25,7 +18,6 @@ export default async function HomePage () {
     redirect("/admin");
   }
 
-  // 🟦volunteer with complete profil
   if (isComplete && !isUserAdmin) {
     redirect("/dashboard");
   }

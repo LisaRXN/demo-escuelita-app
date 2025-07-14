@@ -180,7 +180,7 @@ const AdminPage = () => {
                   link="/admin/agenda"
                 />
                 <div className="p-2 lg:p-5 bg-zinc-50 rounded-xl">
-                  {sessions && <Calendar sessions={sessions} isReduce={true} />}
+                  {sessions && <Calendar sessions={nextSessions} isReduce={true} />}
                 </div>
               </div>
               {/* Voluntarios */}
