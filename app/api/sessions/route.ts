@@ -13,6 +13,8 @@ export interface VolunteerSession {
 export async function GET() {
   const sessions = await prisma.volunteerSession.findMany({
     orderBy: { date: 'desc' },
+    cacheStrategy: { ttl: 60 },
+    
   });
 
   // Prisma retourne des Dates en JS, ici on convertit en ISO string pour simplifier le JSON

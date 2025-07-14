@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { Prisma, RegistrationStatus, SessionTypes } from "@/generated/prisma";
+import { Prisma, RegistrationStatus, SessionTypes } from "@prisma/client";
 import { NextRequest } from "next/server";
 
 type SortableColumn = 'firstName' | 'lastName' | 'email' | 'createdAt';
@@ -44,6 +44,7 @@ export async function GET(req: NextRequest) {
   const users = await prisma.volunteer.findMany({
     where,
     orderBy,
+    cacheStrategy: { ttl: 60 },
   });
 
   if (!withCounts) {

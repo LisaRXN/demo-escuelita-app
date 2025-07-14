@@ -3,15 +3,13 @@ import { prisma } from "@/lib/prisma"; // adapte si ton import est différent
 import { NextResponse } from "next/server";
 
 export async function GET() {
-
-
   const today = new Date();
   today.setHours(23, 59, 59, 999);
 
   const sessions = await prisma.volunteerSession.findMany({
     where: {
       date: {
-        lte: today.toISOString(), 
+        lte: today.toISOString(),
       },
     },
     include: {
@@ -22,12 +20,11 @@ export async function GET() {
       },
     },
     orderBy: {
-      date: "desc", 
+      date: "desc",
     },
-    take: 4, 
+    take: 4,
+    cacheStrategy: { ttl: 60 },
   });
-
-  
 
   // Ajoute la liste des admins inscrits à chaque session
   const sessionsWithLiders = sessions.map((session) => {

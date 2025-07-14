@@ -20,6 +20,7 @@
     "@fullcalendar/react": "^6.1.17",
     "@fullcalendar/timegrid": "^6.1.17",
     "@prisma/client": "^6.11.1",
+    "@prisma/extension-accelerate": "^2.0.2",
     "@tanstack/react-query": "^5.80.7",
     "lucide-react": "^0.513.0",
     "luxon": "^3.6.1",

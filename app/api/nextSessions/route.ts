@@ -22,7 +22,8 @@ export async function GET() {
       }
     },
     orderBy: { date: 'asc' },
-    take:4
+    take:4,
+    cacheStrategy: { ttl: 60 },
     });
 
   // Prisma retourne des Dates en JS, ici on convertit en ISO string pour simplifier le JSON

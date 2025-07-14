@@ -1,17 +1,19 @@
-import { PrismaClient } from '@/generated/prisma'
+import { PrismaClient } from '@prisma/client/edge'
+import { withAccelerate } from '@prisma/extension-accelerate'
 
-const prismaClientSingleton = () => {
-  return new PrismaClient({
-    log: ['query'],
-  });
-};
-
-declare global {
-  // For dev (hot reload)
-  var prisma: PrismaClient | undefined;
+const globalForPrisma = globalThis as unknown as {
+  prisma: ReturnType<typeof setupPrisma> | undefined
 }
 
+// Séparé pour éviter les problèmes de typage
+const setupPrisma = () =>
+  new PrismaClient({
+    log: ['query'], // Optionnel : utile en dev
+  }).$extends(withAccelerate())
+
 export const prisma =
-  process.env.NODE_ENV === 'production'
-    ? prismaClientSingleton() // new instance in prod (serverless safe)
-    : global.prisma ?? (global.prisma = prismaClientSingleton());
+  globalForPrisma.prisma ?? setupPrisma()
+
+if (process.env.NODE_ENV !== 'production') {
+  globalForPrisma.prisma = prisma
+}
