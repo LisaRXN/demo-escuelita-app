@@ -26,7 +26,7 @@ const AdminNavbar = async () => {
       </span>
 
       {/* Desktop */}
-      <div className="hidden flex-1 md:flex items-center justify-end w-full gap-6 mr-6">
+      <div className="hidden flex-1 md:flex items-center justify-end w-full gap-4 mr-6">
       <ResetDatabase />
       <ToggleAdminButton isAdmin={true} volunteerId={user.id} />
 

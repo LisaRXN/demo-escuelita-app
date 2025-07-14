@@ -24,7 +24,7 @@ const Navbar = async () => {
           Hola {user?.firstName} !
         </span>
 
-        <div className="flex-1 flex items-center justify-end w-full gap-10">
+        <div className="flex-1 flex items-center justify-end w-full gap-4">
           <ToggleAdminButton isAdmin={false} volunteerId={user.id} />
           <a
             href="/profil"

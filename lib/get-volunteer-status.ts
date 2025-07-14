@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 export async function getVolunteerStatus(userId: string | null) {
   if (!userId) return { isAdmin: false, isComplete: false };
 
-  const volunteer = await prisma.volunteer.findUnique({
+  const volunteer = await prisma.volunteer.findFirst({
     where: { clerkUserId: userId },
     select: {
       isAdmin: true,
