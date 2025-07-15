@@ -1,7 +1,17 @@
 # 🌱 Volunteer Management App
 
+![Next.js](https://img.shields.io/badge/Next.js-14-blue)
+![Clerk](https://img.shields.io/badge/Auth-Clerk-purple)
+![Prisma](https://img.shields.io/badge/ORM-Prisma-2D3748)
+![TanStack Query](https://img.shields.io/badge/Fetch-TanStack%20Query-yellowgreen)
+
+
 A modern web application to organize and manage volunteer sessions, streamline sign-ups, and track participation.  
 Built to simplify coordination while providing a smooth experience for both admins and volunteers.
+
+## ✨ Demo
+
+🔗 [https://demo.laescuelita-app.org](https://demo.laescuelita-app.org)
 
 ---
 
@@ -25,30 +35,16 @@ Built to simplify coordination while providing a smooth experience for both admi
 - Instant UI feedback (toast notifications)
 
 ### 📦 Tech Stack
-- **Next.js 14 (App Router)**
-- **Clerk** for authentication
-- **Prisma** + **PostgreSQL** (via PlanetScale or Railway)
-- **TanStack Query (React Query)** for data caching
-- **Tailwind CSS** for responsive design
-- **React Hot Toast** for user feedback
-- **FullCalendar** integration (optional)
 
----
+| Layer        | Tech                          |
+|--------------|-------------------------------|
+| Frontend     | Next.js (App Router)          |
+| UI Fetching  | TanStack Query                |
+| Validation   | Zod                           |
+| Auth         | Clerk                         |
+| Backend      | Server Actions (Next.js 14)   |
+| Database     | PostgreSQL + Prisma           |
 
-## 📁 Project Structure
-/app
-  /admin                  → Admin-specific pages (protected layout)
-  /api/sessions           → API routes for session logic
-  /components             → Shared UI components
-  /lib                    → Helpers (e.g. Prisma client, fetcher)
-  /services               → Business logic (e.g. status helpers)
-  /styles                 → Tailwind config & base styles
-
-/prisma
-  schema.prisma           → Prisma models
-
-/public
-  assets, icons, etc.
 
 ---
 
@@ -82,3 +78,4 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 ```bash
 npm run dev
 ```
+
