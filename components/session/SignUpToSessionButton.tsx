@@ -19,7 +19,7 @@ export default function SignUpToSessionButton({
 
   const { execute: executeSignUp, isLoading } = useAction(signUpToSession, {
     onSuccess: () => {
-      toast.success("Gracias, estas inscrito/a a la sesión!");
+      toast.success("Gracias, estas inscrito/a al evento!");
       queryClient.invalidateQueries({ queryKey: ["user"] });
       queryClient.invalidateQueries({ queryKey: ["sessionById"] });
       queryClient.invalidateQueries({ queryKey: ["sessionsWithLiders"] });

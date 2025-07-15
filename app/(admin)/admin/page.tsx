@@ -20,7 +20,9 @@ const AdminPage = () => {
     staleTime: 0,
   });
 
-  const { data: sessions, isLoading: loadingSessions } = useQuery<SessionWithLiders[]>({
+  const { data: sessions, isLoading: loadingSessions } = useQuery<
+    SessionWithLiders[]
+  >({
     queryKey: ["LastSessionsWithLiders"],
     queryFn: () => fetcher("/api/lastSessionsWithLiders"),
     staleTime: 0,
@@ -32,7 +34,6 @@ const AdminPage = () => {
     select: (data) => data.slice(0, 3),
     staleTime: 0,
   });
-
 
   const prevSlide = () => {
     const carousel = carouselRef.current;
@@ -111,78 +112,66 @@ const AdminPage = () => {
           {/* Deux colonnes */}
           <div className="flex flex-col lg:flex-row items-start justify-center gap-8 w-full">
             {/* Colonne gauche : Sessions */}
-            <div className="flex-1 gap-5 flex flex-col bg-white rounded-2xl p-3 lg:p-5 w-full max-h-[400px] lg:max-h-[725px]">
-              <CardTitle
-                title="¡Sigue a tus voluntarios! 💖"
-                subtitle="Marca la asistencia de tus voluntarios en cada sesión"
-                link="/agenda"
-              />
-              <div className="border border-zinc-300 rounded-lg w-full overflow-y-auto">
-                <table className="min-w-full divide-y divide-zinc-200 rounded-lg overflow-hidden">
-                  <thead className="bg-mygreen/40 text-mygray">
-                    <tr>
-                      <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                        <span className="flex items-center gap-2">
-                          <i className="fa-solid fa-shapes"></i> Sesión
-                        </span>
-                      </th>
-                      <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                        <span className="flex items-center gap-2">
-                          <i className="fa-solid fa-calendar"></i> Fecha
-                        </span>
-                      </th>
-                      <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
-                        <span className="flex items-center gap-2">
-                          <i className="fa-solid fa-users"></i> Asistencia
-                        </span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-zinc-200">
-                    {sessions?.map((session: SessionWithLiders) => (
-                      <tr key={session.id} className="hover:bg-zinc-50">
-                        <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
-                          {session.type === "TUTORING"
-                            ? "Tutorias"
-                            : session.title.length > 15
-                            ? session.title.slice(0, 15) + "..."
-                            : session.title}
-                        </td>
-                        <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
-                          {new Intl.DateTimeFormat("es-ES", {
-                            day: "numeric",
-                            month: "numeric",
-                          }).format(new Date(session.date))}
-                        </td>
-                        <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
-                          <Link
-                            href={`/admin/sessions/${session.id}`}
-                            className="inline-flex items-center justify-center text-myorange font-medium transition-colors duration-200 underline hover:text-orange-500"
-                          >
-                            Completar
-                          </Link>
-                          <i className="fa-solid fa-chevron-right text-[12px] text-myorange ml-1"></i>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Colonne droite */}
-            <div className="flex-1 flex flex-col items-start justify-center gap-8 w-full ">
-              {/* Calendrier */}
-              <div className="gap-5 flex flex-col bg-white rounded-2xl p-3 lg:p-5 w-full h-auto">
+            <div className="order-2 lg:order-1 flex-1 flex flex-col items-start justify-center gap-8 w-full ">
+              <div className="flex-1 gap-5 flex flex-col bg-white rounded-2xl p-3 lg:p-5 w-full max-h-[400px] lg:max-h-[725px]">
                 <CardTitle
-                  title="¡Lidera una sesión! 🙌"
-                  subtitle="Apúntate como líder y acompaña el grupo"
-                  link="/admin/agenda"
+                  title="¡Sigue a tus voluntarios! 💖"
+                  subtitle="Marca la asistencia de tus voluntarios en cada sesión"
+                  link="/agenda"
                 />
-                <div className="p-2 lg:p-5 bg-zinc-50 rounded-xl">
-                  {sessions && <Calendar sessions={nextSessions} isReduce={true} />}
+                <div className="border border-zinc-300 rounded-lg w-full overflow-y-auto">
+                  <table className="min-w-full divide-y divide-zinc-200 rounded-lg overflow-hidden">
+                    <thead className="bg-mygreen/40 text-mygray">
+                      <tr>
+                        <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                          <span className="flex items-center gap-2">
+                            <i className="fa-solid fa-shapes"></i> Sesión
+                          </span>
+                        </th>
+                        <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                          <span className="flex items-center gap-2">
+                            <i className="fa-solid fa-calendar"></i> Fecha
+                          </span>
+                        </th>
+                        <th className="px-2 lg:px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+                          <span className="flex items-center gap-2">
+                            <i className="fa-solid fa-users"></i> Asistencia
+                          </span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-zinc-200">
+                      {sessions?.map((session: SessionWithLiders) => (
+                        <tr key={session.id} className="hover:bg-zinc-50">
+                          <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
+                            {session.type === "TUTORING"
+                              ? "Tutorias"
+                              : session.title.length > 15
+                              ? session.title.slice(0, 15) + "..."
+                              : session.title}
+                          </td>
+                          <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
+                            {new Intl.DateTimeFormat("es-ES", {
+                              day: "numeric",
+                              month: "numeric",
+                            }).format(new Date(session.date))}
+                          </td>
+                          <td className="px-2 lg:px-6 py-4 whitespace-nowrap">
+                            <Link
+                              href={`/admin/sessions/${session.id}`}
+                              className="inline-flex items-center justify-center text-myorange font-medium transition-colors duration-200 underline hover:text-orange-500"
+                            >
+                              Completar
+                            </Link>
+                            <i className="fa-solid fa-chevron-right text-[12px] text-myorange ml-1"></i>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
+
               {/* Voluntarios */}
               <div className="gap-5 flex flex-col bg-white rounded-2xl p-3 lg:p-5 w-full h-auto">
                 <CardTitle
@@ -230,12 +219,28 @@ const AdminPage = () => {
                 </div>
               </div>
             </div>
+
+            {/* Colonne droite */}
+            <div className="order-1 lg:order-2 flex-1 flex flex-col items-start justify-center gap-8 w-full ">
+              {/* Calendrier */}
+              <div className="gap-5 flex flex-col bg-white rounded-2xl p-3 lg:p-5 w-full h-auto">
+                <CardTitle
+                  title="¡Lidera una sesión! 🙌"
+                  subtitle="Apúntate como líder y acompaña el grupo"
+                  link="/admin/agenda"
+                />
+                <div className="p-2 lg:p-5 bg-zinc-50 rounded-xl">
+                  {sessions && (
+                    <Calendar sessions={nextSessions} isReduce={true} />
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
     </div>
   );
-}
-
+};
 
 export default AdminPage;
